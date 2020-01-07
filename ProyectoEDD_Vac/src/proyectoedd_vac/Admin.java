@@ -104,7 +104,7 @@ Temporal tm = new Temporal();
 
         lbl_ad.setText("jLabel1");
 
-        btn_pr.setText("jButton1");
+        btn_pr.setText("Insertar");
         btn_pr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_prActionPerformed(evt);
@@ -119,13 +119,14 @@ Temporal tm = new Temporal();
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_carga)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(234, 234, 234)
-                                .addComponent(lbl_ad)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                                .addComponent(lbl_ad))
+                            .addComponent(btn_pr))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_report)
                             .addComponent(btn_back))))
@@ -135,9 +136,7 @@ Temporal tm = new Temporal();
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_pr)
-                .addGap(26, 26, 26))
+                .addGap(26, 179, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,15 +156,15 @@ Temporal tm = new Temporal();
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(btn_report)
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))
-                        .addContainerGap(46, Short.MAX_VALUE))
+                        .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_pr)
-                        .addGap(141, 141, 141))))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,7 +198,7 @@ Temporal tm = new Temporal();
     }//GEN-LAST:event_btn_cargaActionPerformed
 
     private void btn_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportActionPerformed
-        reco();
+        tm.graphiz(2);
     }//GEN-LAST:event_btn_reportActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -209,7 +208,8 @@ Temporal tm = new Temporal();
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_prActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prActionPerformed
-        tm.reco();
+       // tm.reco();
+       reco();
     }//GEN-LAST:event_btn_prActionPerformed
     
      public void Lectura(String path) throws IOException{
@@ -322,6 +322,7 @@ Temporal tm = new Temporal();
      
      public void verificarRep() throws NoSuchAlgorithmException{
         Table_Hash hash = new Table_Hash();
+        String car = "";
         //Temporal tm = new Temporal();
         int as = 0;
         String userIncorrectos="";
@@ -368,14 +369,15 @@ Temporal tm = new Temporal();
                 tm.add(vec.get(i).nombre.replace(" ", ""), vec.get(i).apellido.replace(" ", ""),vec.get(i).carnet.replace(" ","" ),vec.get(i).password.replace(" ", ""));
             }else if(vec.get(i).password.length()<8){
                // malcontra.add(vec.get(i));
-               inco += inco+"el usuario: "+vec.get(i).carnet+" no cuenta con el minimo de caracteres"+"\n";
+               car = vec.get(i).carnet+"  no cuenta con el minimo de caracteres";
+               inco += car+"\n";
                //System.out.println(vec.get(i).user);
             }
             
             
         }
         //System.out.println(inco);
-        //txt_carac.setText(inco);
+        txt_cortos.setText(inco);
         /*for(int j=0; j<malcontra.size();j++){
             txt_carac.setText(malcontra.get(j).user);
         }*/

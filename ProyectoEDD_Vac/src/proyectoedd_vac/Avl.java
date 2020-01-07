@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import  static proyectoedd_vac.LearningAVL.primero;
 /**
@@ -14,6 +15,9 @@ import  static proyectoedd_vac.LearningAVL.primero;
  */
 public class Avl {
     public Node root;
+    public static ArrayList<Integer> inor = new ArrayList<Integer>();
+    public static ArrayList<Integer> pre = new ArrayList<Integer>();
+    public static ArrayList<Integer> post = new ArrayList<Integer>();
  
     public static class Node {
         private int key;
@@ -288,30 +292,48 @@ public class Avl {
             preOrder(root.right);
         }
     }
+   public void inorder(){
+       recursive_inorder(root);
+   }
+   public void recursive_inorder(Node current){
+       if(current.left!=null){
+           recursive_inorder(current.left);
+       }
+       System.out.println(current.key);
+       inor.add(current.key);
+       
+       if(current.right!=null){
+           recursive_inorder(current.right);
+       }
+   }
    
+   public void preorder(){
+       recursive_preorder(root);
+   }
+   public void recursive_preorder(Node current){
+       System.out.println(current.key);
+       pre.add(current.key);
+       if(current.left!=null){
+           recursive_preorder(current.left);
+       }
+       if(current.right!=null){
+           recursive_preorder(current.right);
+       }
+   }
    
-    
-    /*public static void main(String[] args) {
-        AVL tree = new AVL();
+    public void postorder(){
+        recursive_postorder(root);
+    }
+    public void recursive_postorder(Node current){
+        if(current.left!=null){
+            recursive_postorder(current.left);
+        }
+        if(current.right!=null){
+            recursive_postorder(current.right);
+        }
         
-        //System.out.println("Inserting values 1 to 10");
-        /*for (int i = 1; i < 10; i++){
-            tree.insert(i);
-        }*/
-        
-        //tree.insert(0);
-        //tree.insert(1);
-        //tree.insert(2);
-        //tree.insert(3);
-        //tree.insert(4);
-        //tree.insert(5);
-        //tree.insert(3);
-        //tree.delete(3);
-        //System.out.print("Printing balance: ");
-        //tree.printBalance();
-       // System.out.println();
-        //tree.preOrder(tree.root);
-     //   tree.root.graficar("ImagenArbolAVL.jpg");
-      
-   // } */ 
+        System.out.println(current.key);
+        post.add(current.key);
+    }
+   
 }

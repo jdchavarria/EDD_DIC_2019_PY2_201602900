@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 //import static proyectoedd_vac.Avl.Node;
 
 
@@ -42,6 +43,7 @@ Thread t;
 Thread t2;
 Thread t3;
 Avl tree = new Avl();
+Avl tree2 = new Avl();
 
     /**
      * Creates new form Learning
@@ -73,6 +75,7 @@ Avl tree = new Avl();
         btn_next = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
         lbl_info = new javax.swing.JLabel();
+        btn_recorridos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,6 +120,8 @@ Avl tree = new Avl();
 
         lbl_ejemplo.setText("jLabel1");
 
+        btn_next.setBackground(new java.awt.Color(0, 102, 102));
+        btn_next.setFont(new java.awt.Font("Sitka Text", 3, 12)); // NOI18N
         btn_next.setText("Next");
         btn_next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +142,15 @@ Avl tree = new Avl();
         lbl_info.setText("jLabel1");
         lbl_info.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        btn_recorridos.setBackground(new java.awt.Color(0, 102, 102));
+        btn_recorridos.setFont(new java.awt.Font("Sitka Text", 3, 12)); // NOI18N
+        btn_recorridos.setText("Recorridos");
+        btn_recorridos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_recorridosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,29 +159,34 @@ Avl tree = new Avl();
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_manual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_avl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_auto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_next)
-                                .addGap(20, 20, 20))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_ruta, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                                    .addComponent(txt_eli))
-                                .addGap(0, 99, Short.MAX_VALUE))))
-                    .addComponent(lbl_ejemplo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_manual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_avl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_auto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_next)
+                                        .addGap(20, 20, 20))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_ruta, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                                            .addComponent(txt_eli))
+                                        .addGap(0, 99, Short.MAX_VALUE))))
+                            .addComponent(lbl_ejemplo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_back)
+                                    .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_back)
-                            .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(btn_recorridos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -178,7 +197,7 @@ Avl tree = new Avl();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(49, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btn_avl)
@@ -197,8 +216,10 @@ Avl tree = new Avl();
                         .addComponent(btn_back)
                         .addGap(18, 18, 18)
                         .addComponent(lbl_info, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(lbl_ejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_recorridos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_ejemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,6 +286,15 @@ Avl tree = new Avl();
         t3 = new Thread(this,"hilo 3");
         t3.start();
     }//GEN-LAST:event_btn_nextActionPerformed
+
+    private void btn_recorridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_recorridosActionPerformed
+        tree.inorder();
+        tree.preorder();
+        tree.postorder();
+        LearningReco recorri = new LearningReco();
+        recorri.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btn_recorridosActionPerformed
 public void Lectura(String path) throws IOException{
          JsonParser parser = new JsonParser();
          FileReader fr = new FileReader(path);
@@ -379,8 +409,8 @@ public void Lectura(String path) throws IOException{
          }else if(eleccion.equals("manual")){
              if(contador==0){
                  try {
-                     tree.insert(datos.get(contador));
-                     tree.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
+                     tree2.insert(datos.get(contador));
+                     tree2.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
                      Thread.sleep(2000);
                      image.setIcon(new ImageIcon("ImagenArbolAVLMa"+contador+".jpg"));
                      image.repaint();
@@ -391,22 +421,24 @@ public void Lectura(String path) throws IOException{
              }else if(contador==(datos.size()-1)){
                  try {
                      System.out.println(datos.size()-1);
-                     tree.insert(datos.get(contador));
-                     tree.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
+                     tree2.insert(datos.get(contador));
+                     tree2.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
                      Thread.sleep(2000);
                      image.setIcon(new ImageIcon("ImagenArbolAVLMa"+contador+".jpg")); 
                      image.repaint();
                  } catch (InterruptedException ex) {
                      Logger.getLogger(LearningAVL.class.getName()).log(Level.SEVERE, null, ex);
                  }
+              }else if(contador>datos.size()){
+                  JOptionPane.showMessageDialog(null, "Llego al limite de datos ");
               }else{
                  try {
                      primero = datos.get(contador);
-                     tree.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
+                     tree2.root.graficar("ImagenArbolAVLMa"+contador+".jpg");
                      Thread.sleep(2000);
                      image.setIcon(new ImageIcon("ImagenArbolAVLMa"+contador+".jpg"));
                      image.repaint();
-                     tree.insert(datos.get(contador));
+                     tree2.insert(datos.get(contador));
                      contador++;
                  } catch (InterruptedException ex) {
                      Logger.getLogger(LearningAVL.class.getName()).log(Level.SEVERE, null, ex);
@@ -415,6 +447,7 @@ public void Lectura(String path) throws IOException{
                  
              
          }
+         tree.root.graficar("ImagenArbolAVl.jpg");
      
      }
     
@@ -461,6 +494,7 @@ public void Lectura(String path) throws IOException{
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_manual;
     private javax.swing.JButton btn_next;
+    private javax.swing.JButton btn_recorridos;
     private javax.swing.JLabel image;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_ejemplo;

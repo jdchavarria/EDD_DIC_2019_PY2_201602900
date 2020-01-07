@@ -209,7 +209,7 @@ public class Table_Hash {
                     Users temp = (Users) this.users[i];
                     pw.println("<TR>");
                     pw.println("<TD BGCOLOR=\"#F6DDCC\">" + i + ")</TD>");
-                    pw.println("<TD BGCOLOR=\"#F6DDCC\">Username: " + temp.getNombre() + " Password: " + "</TD>");
+                    pw.println("<TD BGCOLOR=\"#F6DDCC\">Username: " + temp.getNombre() + "\\n Password: " + "</TD>");
                     pw.println("</TR>");
 
                 } else {

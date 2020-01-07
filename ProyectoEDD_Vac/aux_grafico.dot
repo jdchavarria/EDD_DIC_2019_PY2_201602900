@@ -1,6 +1,6 @@
 digraph grafica{
 rankdir=TB;
 node [shape=record,style=filled,fillcolor=seashell];
-0
+6
 nodo1[label="45fe: 0"];
 }

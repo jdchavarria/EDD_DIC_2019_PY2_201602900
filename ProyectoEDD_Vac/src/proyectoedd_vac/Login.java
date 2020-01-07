@@ -18,6 +18,8 @@ import  static proyectoedd_vac.Table_Hash.users;
 public class Login extends javax.swing.JFrame {
 public static String name = " ";
 public static String nombre = "Admin";
+public static String pass = " ";
+Temporal temp = new Temporal();
     /**
      * Creates new form Login
      */
@@ -40,7 +42,6 @@ public static String nombre = "Admin";
         btn_login = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        temp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,13 +63,6 @@ public static String nombre = "Admin";
         jLabel2.setFont(new java.awt.Font("Sitka Text", 3, 14)); // NOI18N
         jLabel2.setText("Password:");
 
-        temp.setText("jButton1");
-        temp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tempActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,20 +79,13 @@ public static String nombre = "Admin";
                 .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_login)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(temp)
-                        .addContainerGap())))
+                .addComponent(btn_login)
+                .addGap(137, 137, 137))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(temp)
-                .addGap(11, 11, 11)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_carnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -130,16 +117,16 @@ public static String nombre = "Admin";
         Menu me = new Menu();
         Admin ad = new Admin();
         //Table_Hash tabla =  new Table_Hash();
-        Temporal tem = new Temporal();
+        //Temporal tem = new Temporal();
         name = txt_carnet.getText();
-        String pass = new String(txt_pass.getPassword());
+        pass = new String(txt_pass.getPassword());
         boolean aceptar = false;
         if(pass.equals(nombre) && name.equals("Admin")){
             ad.setVisible(true);
             setVisible(false);
         }else {
-            
-            if(tem.verificar(name, pass)){
+            //temp.verificar(name, pass.replace(" ", ""));
+            if(temp.verificar(name.replace(" ", ""), temp.encriptar(pass.replace(" ", "")))){
                   me.setVisible(true);
                   setVisible(false);
             } else {
@@ -151,15 +138,6 @@ public static String nombre = "Admin";
      //   Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
     //}
     }//GEN-LAST:event_btn_loginActionPerformed
-
-    private void tempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempActionPerformed
-    try {
-        Table_Hash has = new Table_Hash();
-        has.GenerateImage(2);
-    } catch (NoSuchAlgorithmException ex) {
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }//GEN-LAST:event_tempActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,7 +179,6 @@ public static String nombre = "Admin";
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton temp;
     private javax.swing.JTextField txt_carnet;
     private javax.swing.JPasswordField txt_pass;
     // End of variables declaration//GEN-END:variables
