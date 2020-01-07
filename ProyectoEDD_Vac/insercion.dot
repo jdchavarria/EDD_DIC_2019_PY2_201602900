@@ -1,3 +1,0 @@
-digraph insercion{
-rankdir=LR;
-Array[shape=record,label="{20|30|50|80|100|100|200|300}"]}
