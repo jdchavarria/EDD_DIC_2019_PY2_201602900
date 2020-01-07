@@ -15,12 +15,12 @@ import java.io.PrintWriter;
  */
 public class Temporal {
     public static Users []arreglo;// = new Users[37];
-    public static Users []tem = new Users[37];
+    public static Users []tem = new Users[150];
     public static int count = 0;
     public static int i= 0;
     public static int elementos;
     public Temporal(){ 
-        arreglo = new Users[37];
+        arreglo = new Users[150];
         /*for(int i=0;i<arreglo.length;i++){
             arreglo[i] = new Users("1","1","1","1");
         }*/
@@ -159,7 +159,7 @@ public class Temporal {
                     Users temp = (Users) this.tem[i];
                     pw.println("<TR>");
                     pw.println("<TD BGCOLOR=\"#F6DDCC\">" + i + ")</TD>");
-                    pw.println("<TD BGCOLOR=\"#F6DDCC\">Username: " + temp.getNombre() + "\\n Password: " + "</TD>");
+                    pw.println("<TD BGCOLOR=\"#F6DDCC\">Username: " + temp.getNombre() + "\\n Password: "+temp.getPassword() + "</TD>");
                     pw.println("</TR>");
 
                 } else {
@@ -187,6 +187,7 @@ public class Temporal {
 
                 Runtime rt = Runtime.getRuntime();
                 rt.exec(cmd);
+                rt.exec("rundll32 url.dll,FileProtocolHandler "+rutaImagen);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

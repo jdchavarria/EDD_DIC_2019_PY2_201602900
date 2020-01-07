@@ -25,6 +25,7 @@ ArrayList<Integer> copia_pre = new ArrayList<Integer>();
 ArrayList<Integer> copia_post = new ArrayList<Integer>();
 public static String eleccion="";
 public static String operacion = "";
+public static int cuenta= 0,cuenta2 =0, cuenta3=0;
 Thread t;
 Thread t2;
 Thread t3;
@@ -43,6 +44,9 @@ Thread t9;
         initComponents();
         imagen.setIcon(new ImageIcon("ImagenArbolAVl.jpg"));
         imagen.repaint();
+        info_inor.setText("Inorden= Izquierda-raiz-derecha");
+        info_pre.setText("Preorden= Raiz-izquerda-derecha");
+        info_post.setText("Postorden= Izquieda-derecha-raiz");
     }
 
     /**
@@ -72,6 +76,9 @@ Thread t9;
         btn_back = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLabel4 = new javax.swing.JLabel();
+        info_inor = new javax.swing.JLabel();
+        info_pre = new javax.swing.JLabel();
+        info_post = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,6 +190,12 @@ Thread t9;
 
         jScrollPane2.setViewportView(jLabel4);
 
+        info_inor.setText("jLabel5");
+
+        info_pre.setText("jLabel5");
+
+        info_post.setText("jLabel5");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -213,19 +226,30 @@ Thread t9;
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(post_manual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(post_auto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(post_auto))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(post_manual, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(post_next)))
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(info_post)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
+                .addGap(149, 149, 149)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(info_inor)
+                    .addComponent(info_pre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_back)
                 .addGap(49, 49, 49))
@@ -257,15 +281,25 @@ Thread t9;
                         .addComponent(jLabel3)
                         .addGap(32, 32, 32)
                         .addComponent(post_auto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(post_manual)
-                            .addComponent(post_next)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2))
+                            .addComponent(post_next))
+                        .addGap(0, 78, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))
                         .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(info_inor)
+                .addGap(7, 7, 7)
+                .addComponent(info_pre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(info_post)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -276,7 +310,9 @@ Thread t9;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -285,6 +321,8 @@ Thread t9;
     private void pre_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_nextActionPerformed
         eleccion = "preorden";
         operacion = "siguiente";
+        t6 = new Thread(this,"hilo6");
+        t6.start();
     }//GEN-LAST:event_pre_nextActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -303,11 +341,15 @@ Thread t9;
     private void ino_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ino_manualActionPerformed
         eleccion = "inorden";
         operacion = "manual";
+        t2 = new Thread(this,"hilo2");
+        t2.start();
     }//GEN-LAST:event_ino_manualActionPerformed
 
     private void ino_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ino_nextActionPerformed
         eleccion = "inorden";
         operacion = "siguiente";
+        t3 = new Thread(this, "hilo3");
+        t3.start();
     }//GEN-LAST:event_ino_nextActionPerformed
 
     private void pre_autoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_autoActionPerformed
@@ -320,6 +362,8 @@ Thread t9;
     private void pre_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_manualActionPerformed
         eleccion = "preorden";
         operacion = "manual";
+        t5 = new Thread(this,"hilo5");
+        t5.start();
     }//GEN-LAST:event_pre_manualActionPerformed
 
     private void post_autoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_post_autoActionPerformed
@@ -332,11 +376,15 @@ Thread t9;
     private void post_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_post_manualActionPerformed
         eleccion = "postorden";
         operacion = "manual";
+        t8 = new Thread(this,"hilo8");
+        t8.start();
     }//GEN-LAST:event_post_manualActionPerformed
 
     private void post_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_post_nextActionPerformed
         eleccion = "postorden";
         operacion = "siguiente";
+        t9 = new Thread(this,"hilo9");
+        t9.start();
     }//GEN-LAST:event_post_nextActionPerformed
 
     public void Grafica_inor(String path){
@@ -400,9 +448,21 @@ Thread t9;
                     }
                 }
             }else if(operacion.equals("manual")){
-                
+                copia_inor.clear();
+                for(int i=0;i<inor.size();i++){
+                    try {
+                        copia_inor.add(inor.get(i));
+                        Thread.sleep(1500);
+                        Grafica_inor("ImagenInordenMa"+i+".jpg");
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LearningReco.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
             }else if(operacion.equals("siguiente")){
-                
+                jLabel4.setIcon(new ImageIcon("ImagenInordenMa"+cuenta+".jpg"));
+                jLabel4.repaint();
+                cuenta++;
             }
         }else if(eleccion.equals("preorden")){
             if(operacion.equals("automatico")){
@@ -418,9 +478,22 @@ Thread t9;
                     }
                 }
             }else if(operacion.equals("manual")){
-                
+                copia_pre.clear();
+                for(int i=0;i<pre.size();i++){
+                    try {
+                        copia_pre.add(pre.get(i));
+                        Thread.sleep(1500);
+                        Grafica_pre("ImagenPreordenMa"+i+".jpg");
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LearningReco.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
             }else if(operacion.equals("siguiente")){
-                
+                System.out.println("llego");
+                jLabel4.setIcon(new ImageIcon("ImagenPreordenMa"+cuenta2+".jpg"));
+                jLabel4.repaint();
+                cuenta2++;
             }
         }else if(eleccion.equals("postorden")){
            
@@ -437,9 +510,23 @@ Thread t9;
                     }
                 }
             }else if(operacion.equals("manual")){
-                
+                System.out.println("llego1111");
+                copia_post.clear();
+                for(int i=0;i<post.size();i++){
+                    try {
+                        copia_post.add(post.get(i));
+                        Thread.sleep(1500);
+                        Grafica_post("ImagenPostordenMa"+i+".jpg");
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LearningReco.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                }
             }else if(operacion.equals("siguiente")){
-                
+                System.out.println("llego2222");
+                jLabel4.setIcon(new ImageIcon("ImagenPostordenMa"+cuenta3+".jpg"));
+                jLabel4.repaint();
+                cuenta3++;
             }
         }
        
@@ -574,6 +661,9 @@ Thread t9;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JLabel imagen;
+    private javax.swing.JLabel info_inor;
+    private javax.swing.JLabel info_post;
+    private javax.swing.JLabel info_pre;
     private javax.swing.JButton ino_auto;
     private javax.swing.JButton ino_manual;
     private javax.swing.JButton ino_next;

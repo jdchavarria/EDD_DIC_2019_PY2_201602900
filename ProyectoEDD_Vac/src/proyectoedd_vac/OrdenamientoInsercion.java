@@ -37,6 +37,7 @@ ArrayList<Integer> datos = new ArrayList<Integer>();
 int [] dat;
 public static String eleccion="";
 public static int cuenta = 0;
+public static int contador2 = 0;
 Thread t;
 Thread t2;
 Thread t3;
@@ -284,7 +285,7 @@ Thread t3;
      public void run(){
         int pos, aux,pos2,aux2;
         int contador = 0;
-        int contador2 = 0;
+        
         if(eleccion.equals("automatico")){
             for(int i=0;i<dat.length;i++){
                 try {
@@ -323,9 +324,14 @@ Thread t3;
                  }
             }
          }else if(eleccion.equals("siguiente")){
-            imagen.setIcon(new ImageIcon("ImagenInsercionMa"+cuenta+".jpg"));
-            imagen.repaint();
-            cuenta++;
+            try {
+                Thread.sleep(2000);
+                imagen.setIcon(new ImageIcon("ImagenInsercionMa"+cuenta+".jpg"));
+                imagen.repaint();
+                cuenta++;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(OrdenamientoInsercion.class.getName()).log(Level.SEVERE, null, ex);
+            }
          }
        
      }

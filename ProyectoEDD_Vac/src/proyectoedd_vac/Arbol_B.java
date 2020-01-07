@@ -299,7 +299,7 @@ ArbolB tree2 = new ArbolB(2);
                  } catch (InterruptedException ex) {
                      Logger.getLogger(Arbol_B.class.getName()).log(Level.SEVERE, null, ex);
                  }
-             }else if(contador>datos.size()){
+             }else if(contador > (datos.size()-1)){
                  JOptionPane.showMessageDialog(null, "Llego al limite de datos ");
              }else{
                  try {

@@ -1,0 +1,20 @@
+digraph grafica{
+rankdir=TB;
+node [shape=record,style=filled,fillcolor=seashell];
+300
+nodo3[label="<C0>|8fe: 1|<C1>"];
+nodo2[label="<C0>|6fe: -1|<C1>"];
+nodo4[label="1fe: 0"];
+nodo2:C0->nodo4
+nodo3:C0->nodo2
+nodo5[label="<C0>|100fe: 0|<C1>"];
+nodo1[label="<C0>|45fe: 1|<C1>"];
+nodo8[label="89fe: 0"];
+nodo1:C1->nodo8
+nodo5:C0->nodo1
+nodo6[label="<C0>|200fe: 1|<C1>"];
+nodo7[label="300fe: 0"];
+nodo6:C1->nodo7
+nodo5:C1->nodo6
+nodo3:C1->nodo5
+}
